@@ -16,15 +16,17 @@
 	<article>
 		<?php 
 		if(isset($_COOKIE['pseudo'])){
+			// If a pseudo is recorded in my cookie, I show it
 			echo '<p class="info">Dernier message envoyé par '.ucfirst($_COOKIE['pseudo']).'</p>';
 		}else{
+			// If no cookie, it means the conversation has not begun yet
 			echo '<p class=warning>Pas encore de conversation</p>';
 		}
 		?>
 	</article>
 	<article>
 		<form action="minichat_post.php" method="POST">
-			<label for="pseudo">Pseudo: <input type="text" name="pseudo" id="pseudo" value='<?php echo ucfirst($_COOKIE['pseudo']); ?>' required></label><br>
+			<label for="pseudo">Pseudo: <input type="text" name="pseudo" id="pseudo" value='<?php if(isset($_COOKIE['pseudo'])) echo ucfirst($_COOKIE['pseudo']); ?>' required></label><br>
 			<label for="message">Message: <input type="text" name="message" id="message" required></label><br>
 			<input type="submit" name="submit" value="Envoyer">
 		</form>
@@ -37,7 +39,7 @@
 			}catch(Exception $error){
 				die($error->getMessage());
 			}
-
+			// I select pseudo, message, date with the both tables, and I start with the most recent message
 			$sql_message = 'SELECT users.name AS name, messages.message AS message, messages.user_id AS user_id, date_format(messages.date_creation, "%d/%m/%Y à %H:%i:%s") AS date_creation FROM messages INNER JOIN users ON user_id = users.id ORDER BY date_creation DESC';
 
 			$getMessages = $connection->query($sql_message);

@@ -21,7 +21,9 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `minichat`
 --
-
+DROP DATABASE IF EXISTS minichat;
+CREATE DATABASE minichat;
+USE minichat;
 -- --------------------------------------------------------
 
 --
