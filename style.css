@@ -1,0 +1,38 @@
+h1{
+	text-align: center;
+	text-transform: uppercase;
+}
+
+main{
+	width: 100%;
+}
+
+.info{
+	color: green;
+	font-weight: bold;
+}
+
+.warning{
+	color: red;
+	font-weight: bold;
+}
+
+form{
+	margin: 4em 0;
+	text-align: center;
+}
+
+label{
+	font-size: 1.5em;
+	margin-right: 1em;
+}
+
+input{
+	font-size: 1.2em;
+	margin: 10px 0;
+}
+
+.conversation{
+	border: solid 5px black;
+	padding: 0 1em;
+}
